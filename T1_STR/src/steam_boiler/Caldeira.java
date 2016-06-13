@@ -24,6 +24,8 @@ public class Caldeira {
     private int q;
     //estado da valvula de vazao
     private boolean liberar_agua = false;
+    //status do sensor de agua
+    private boolean funcionando = true;
     
  
 }

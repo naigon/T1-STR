@@ -13,7 +13,10 @@ public class Vapor {
     private final int U2=4000;
     
     //VARIAVEIS
+    
     //quantidade de vapor existente na caldeira
     private int v;
+    //status do sensor que mede o vapor
+    private boolean funcionando = true;
     
 }

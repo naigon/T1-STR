@@ -14,5 +14,7 @@ public class Bomba {
     private boolean estado  = false;
     //rendimento(litros p/ segundo)
     private int p;
+    //variavel p/ defeito na bomba
+    private boolean defeito = false;
     
 }
