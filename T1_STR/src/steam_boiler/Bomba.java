@@ -22,7 +22,7 @@ public class Bomba {
 
     public void setEstado(boolean estado) throws InterruptedException {
         this.estado = estado;
-        TimeUnit.SECONDS.sleep(3);
+        TimeUnit.SECONDS.sleep(1);
     }
 
     public boolean getDefeito() {

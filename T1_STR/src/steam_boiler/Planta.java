@@ -21,10 +21,13 @@ public class Planta {
                 System.out.println("MODO: " + modo_operacao + "\n");
                 cal.setLiberar_agua(true);
                 int decremento=0;
+                int decremento_vap=0;
                 System.out.println("MENSAGEM: nivel da caldeira: " + cal.getQ() + 'L');
                 while(cal.getQ() > (cal.getN1()+cal.getN2())/2){
                     System.out.println("MENSAGEM: esvaziando a caldeira...");
                     decremento = cal.getQ() - cal.getVZ();
+                    decremento_vap=decremento/100;
+                    cal.setV(decremento_vap);
                     cal.setQ(decremento);
                     System.out.println("MENSAGEM: nivel da caldeira: " + cal.getQ() + 'L' + "\n");
                     TimeUnit.SECONDS.sleep(1);
@@ -34,12 +37,15 @@ public class Planta {
                 
             case "ENCHER":
                 int incremento=0;
+                int incremento_vap=0;
                 while(cal.getQ() < (cal.getN1()+cal.getN2())/2){
                     System.out.println("MENSAGEM: nivel da caldeira: " + cal.getQ() + 'L' + "\n");
                     System.out.println("MODO: " + modo_operacao + "\n");
                     System.out.println("MENSAGEM: enchendo a Caldeira...");
                     bom.setEstado(true);
                     incremento = cal.getQ() + bom.getP();
+                    incremento_vap=incremento/100;
+                    cal.setV(incremento_vap);
                     cal.setQ(incremento);
                     TimeUnit.SECONDS.sleep(1);
                  
