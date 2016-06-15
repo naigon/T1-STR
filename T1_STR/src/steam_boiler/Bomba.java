@@ -2,7 +2,9 @@
 package steam_boiler;
 
 public class Bomba {
-
+    
+    //capacidade da bomba (litros p/ segundo)
+    private final int P = 250;
     //estado bomba(ligada/desligada)
     private boolean estado  = false;
     //variavel p/ defeito na bomba
@@ -10,6 +12,10 @@ public class Bomba {
 
     public boolean getEstado() {
         return estado;
+    }
+
+    public int getP() {
+        return P;
     }
 
     public void setEstado(boolean estado) {

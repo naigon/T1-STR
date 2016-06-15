@@ -2,55 +2,69 @@
 package steam_boiler;
 
 public class Controle{
-        
-    //CONSTANTES CALDEIRA
     
-    //capacidade maxima(litros)
-    private final int C=10000;
+    public int verifica_nivel_vapor(Caldeira c){
+        return c.getV();
+        }
+    public int verifica_nivel_agua(Caldeira c){
+        return c.getQ();
+        }
+    public int verifica_sensores(Caldeira c, Bomba b){
+        if(c.getFuncionando_sensor_agua()==true && c.getFuncionando_sensor_vapor()==true && b.getDefeito()==false)
+            return 1;
+        else return -1;
+        }
     
-    //limite minimo(litros)
-    private final int M1=2000;
-    
-    //limite maximo(litros)
-    private final int M2=8000;
-    
-    //minimo normal(litros)
-    private final int N1=4000;
-    
-    //maximo normal(litros)
-    private final int N2=6000;
-    
-    //capacidade da valvula de vazao(litros p/ segundo)
-    private final int VZ=500;
-    
-    //CONSTANTES BOMBA
-    //capacidade da bomba (litros p/ segundo)
-    private final int P=250;
-        
-    //CONSTANTES VAPOR
-    
-    //quantidade maxima de vapor(litros p/ segundo)
-    private final int W=4000;
-    //gradiente maximo de incremento(litros p/ segundos p/ segundo)
-    private final int U1=4000;
-    //gradiente maximo de decremento(litros p/ segundos p/ segundo)
-    private final int U2=4000;
-    
-    
-    public String Inicializacao(Caldeira c,Bomba b){
-        if(c.getV()!=0){
+    public String start(Caldeira c,Bomba b){
+        String modo;
+        if(verifica_nivel_vapor(c)!=0){
+            //se a quantidade de vapor for diferente de zero eh pq ta com defeito, assim vai pro modo de emergencia
             c.setFuncionando_sensor_vapor(false);
-            return "MODO: PARADA DE EMERGENCIA";}
-        else{if(c.getQ()>N2)
-                c.esfaziar(VZ);
-             if(c.getQ()<N1){
-                b.setEstado(true);
-                while (c.getQ()<N2)
-                    c.encher(P);
-            }  } 
-        return "MODO: NORMAL";
-    }
-    public void Parada_Emergencia(){
+            modo="PARADA DE EMERGENCIA";
+            return modo;
+        }
+ 
+        //se tiver defeito na medição da agua ou na bomba tbm vai pro modo parada de emergencia
+        if (c.getFuncionando_sensor_agua()==false || b.getDefeito()==true){
+            modo="PARADA DE EMERGENCIA";
+            return modo;
+        }
         
+        //se tiver muito cheia, tem q essvafizar a caldeira
+        if (verifica_nivel_agua(c) > c.getN2()){
+            modo="ESVAZIAR";
+            return modo;
+        }
+    
+        //se tiver vazia, tem que encher a caldeira
+        if (verifica_nivel_agua(c) < c.getN1()){
+            modo="ENCHER";
+            return modo;
+        }
+            
+        //se o nivel de agua está ok e as entidades fisicas todas funcionando, vai pro modo normal
+        if (verifica_nivel_agua(c)<c.getN2() && verifica_nivel_agua(c)>c.getN1() && verifica_sensores(c,b)==1){
+            modo="NORMAL";
+            return modo;
+        }
+        
+        //se o nivel de agua está ok, mas alguma das unidades fisicas apresentar defeito, vai pro modo degradado
+        if (verifica_nivel_agua(c)<c.getN2() && verifica_nivel_agua(c)>c.getN1() && verifica_sensores(c,b)==-1){
+            modo="DEGRADADO";
+            return modo;
+        }
+        
+        //se os niveis de agua estao proximos da quantidade maxima ou minima vai pro modo parada de emergencia
+        if (verifica_nivel_agua(c)>=c.getM2() || verifica_nivel_agua(c)<=c.getM1()){
+            modo="PARADA DE EMERGENCIA";
+            return modo;
+        }
+        modo="NORMAL";
+        return modo;
     }
+
 }
+        
+
+    
+

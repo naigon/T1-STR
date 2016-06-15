@@ -3,8 +3,26 @@ package steam_boiler;
 
 public class Caldeira {
     
+    //CONSTANTES
+    
+    //capacidade maxima(litros)
+    private final int C = 10000;
+    
+    //limite minimo(litros)
+    private final int M1 = 2000;
+    
+    //limite maximo(litros)
+    private final int M2 = 8000;
+    
+    //minimo normal(litros)
+    private final int N1 = 4000;
+    
+    //maximo normal(litros)
+    private final int N2 = 6000;
+    //capacidade da valvula de vazao(litros p/ segundo)
+    private final int VZ = 500;
     //quantidade de vapor existente na caldeira
-    private int v=1;
+    private int v=0;
     //status do sensor que mede o vapor
     private boolean funcionando_sensor_vapor = true;
     //quantidade de agua na caldeira
@@ -13,9 +31,57 @@ public class Caldeira {
     private boolean liberar_agua = false;
     //status do sensor de agua
     private boolean funcionando_sensor_agua = true;
+    
+    //quantidade maxima de vapor(litros p/ segundo)
+    private final int W = 4000;
+    //gradiente maximo de incremento(litros p/ segundos p/ segundo)
+    private final int U1 = 4000;
+    //gradiente maximo de decremento(litros p/ segundos p/ segundo)
+    private final int U2 = 4000;
+
+    public int getC() {
+        return C;
+    }
+
+    public int getW() {
+        return W;
+    }
+
+    public int getU1() {
+        return U1;
+    }
+
+    public int getU2() {
+        return U2;
+    }
+    
 
     public int getQ() {
         return q;
+    }
+
+    public int getM1() {
+        return M1;
+    }
+
+    public int getM2() {
+        return M2;
+    }
+
+    public int getN1() {
+        return N1;
+    }
+
+    public int getN2() {
+        return N2;
+    }
+
+    public int getVZ() {
+        return VZ;
+    }
+    
+    public void setQ(int q) {
+        this.q = q + this.q;
     }
 
     public int getV() {
@@ -42,11 +108,6 @@ public class Caldeira {
         this.funcionando_sensor_agua = funcionando_sensor_agua;
     }
 
-
-    public void setQ(int q) {
-        this.q = q + this.q;
-    }
-
     public boolean getLiberar_agua() {
         return liberar_agua;
     }
@@ -55,29 +116,6 @@ public class Caldeira {
         this.liberar_agua = liberar_agua;
     }
 
-    public boolean getFuncionando() {
-        return funcionando_sensor_agua;
-    }
-
-    public void setFuncionando(boolean funcionando) {
-        this.funcionando_sensor_agua = funcionando;
-    }
-    public String esfaziar(int vz){
-        System.out.println("Esvaziando a caldeira...");
-        liberar_agua=true;
-        while(this.q>0){
-        this.q= this.q - vz;
-        //1 segundo
-        }
-        System.out.println("Caldeira vazia");
-        liberar_agua=false;
-        String mensagem="STEAM-BOILER WAITING";
-        return mensagem;
-    }
-    public void encher(int p){
-        this.q = this.q + p;
-        //1 segundo
-    }
         
     }
     
