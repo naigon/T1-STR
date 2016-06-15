@@ -74,7 +74,7 @@ public class Caldeira {
     }
     
     public void setQ(int q) {
-        this.q = q + this.q;
+        this.q = q;
     }
 
     public int getV() {

@@ -22,11 +22,11 @@ public class Controle{
             System.out.println("MODO: INICIALIZAÇÃO\n");
             modo="ENCHER";
             return modo;}
-        else 
+       /* else 
             if(verifica_nivel_agua(c)!=0 || verifica_nivel_vapor(c)!=0 || verifica_sensores(c,b)==-1){
                 modo="PARADA DE EMERGENCIA";
                 return modo;
-            }
+            }*/
         
             else//se tiver muito cheia, tem q esvafizar a caldeira
                 if (verifica_nivel_agua(c) > c.getN2()){
