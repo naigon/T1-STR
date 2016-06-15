@@ -1,6 +1,8 @@
 
 package steam_boiler;
 
+import java.util.concurrent.TimeUnit;
+
 public class Controle{
     
     public int verifica_nivel_vapor(Caldeira c){
@@ -15,56 +17,48 @@ public class Controle{
         else return -1;
         }
     
-    public String start(Caldeira c,Bomba b){
+    public String start(Caldeira c,Bomba b) throws InterruptedException{
         String modo;
         //inicio: se caldeira nao tem agua nem vapor e os dispositivos estiverem funcionando ela enche e começa a funcionar
-        if(verifica_nivel_agua(c)==0 && verifica_nivel_vapor(c)==0 && verifica_sensores(c,b)==1){    
-            System.out.println("MODO: INICIALIZAÇÃO\n");
-            modo="ENCHER";
-            return modo;}
-       /* else 
-            if(verifica_nivel_agua(c)!=0 || verifica_nivel_vapor(c)!=0 || verifica_sensores(c,b)==-1){
-                modo="PARADA DE EMERGENCIA";
-                return modo;
-            }*/
         
-            else//se tiver muito cheia, tem q esvafizar a caldeira
-                if (verifica_nivel_agua(c) > c.getN2()){
-                    modo="ESVAZIAR";
-                    return modo;
-                }
-    
-                else
-                    //se tiver vazia, tem que encher a caldeira
-                    if (verifica_nivel_agua(c) < c.getN1()){
-                        modo="ENCHER";
-                        return modo;
-                    }
-                    else
-                        //se o nivel de agua está ok e as entidades fisicas todas funcionando, vai pro modo normal
-                        if (verifica_nivel_agua(c)<c.getN2() && verifica_nivel_agua(c)>c.getN1() && verifica_sensores(c,b)==1){
-                            modo="NORMAL";
-                            return modo;
-                            }
-                        else
-                            
-                            //se o nivel de agua está ok, mas alguma das unidades fisicas apresentar defeito, vai pro modo degradado
-                            if (verifica_nivel_agua(c)<c.getN2() && verifica_nivel_agua(c)>c.getN1() && verifica_sensores(c,b)==-1){
-                                modo="DEGRADADO";
-                                return modo;
-                            }
-                            else
-                                
-                                //se os niveis de agua estao proximos da quantidade maxima ou minima vai pro modo parada de emergencia
-                                if (verifica_nivel_agua(c)>=c.getM2() || verifica_nivel_agua(c)<=c.getM1()){
-                                    modo="PARADA DE EMERGENCIA";
-                                    return modo;
-                                }
-                                else  {                      
-                                modo="NORMAL";
-                                return modo;}
-    }
+        while (verifica_nivel_agua(c)<c.getN2() && verifica_nivel_agua(c)>c.getN1() && verifica_sensores(c,b)==1){
+            modo="NORMAL";
+            return modo;
+            
+        }
+        if(verifica_nivel_agua(c)==0 || verifica_nivel_agua(c)<c.getN1() && verifica_sensores(c,b)==1) {
+            modo="ENCHER";
+            System.out.println("MENSAGEM: Caldera vazia ou abaixo do nivel normal\n");
+            TimeUnit.SECONDS.sleep(1);
+            System.out.println("MENSAGEM: Preparando para encher...\n");
+            TimeUnit.SECONDS.sleep(1);
+            return modo;
+        }  
+        if(verifica_nivel_agua(c)>c.getN2() && verifica_sensores(c,b)==1){
+            modo="ESVAZIAR";
+            System.out.println("MENSAGEM: Caldera acima do nivel normal\n");
+            System.out.println("MENSAGEM: Nivel da caldeira: " + verifica_nivel_agua(c) + 'L');
+            TimeUnit.SECONDS.sleep(1);
+            System.out.println("MENSAGEM: Preparando para esvaziar...\n");
+            TimeUnit.SECONDS.sleep(1);
+            return modo;
+            }
 
+        // ((se tiver sem agua sem vapor) OR (agua proxima dos niveis maximo e minimo)) AND (problema nos sensores)
+        if(((verifica_nivel_agua(c)==0 && verifica_nivel_vapor(c)==0) || (verifica_nivel_agua(c)>=c.getM2() || verifica_nivel_agua(c)<=c.getM1())) && verifica_sensores(c,b)==-1){
+            modo="PARADA DE EMERGENCIA";
+            return modo;
+        }
+     
+        //se o nivel de agua está ok, mas alguma das unidades fisicas apresentar defeito, vai pro modo degradado
+        if (verifica_nivel_agua(c)<c.getN2() && verifica_nivel_agua(c)>c.getN1() && verifica_sensores(c,b)==-1){
+            modo="DEGRADADO";
+            return modo;
+        }
+        else  {                      
+            modo="NORMAL";
+            return modo;}
+    }
 }
         
 

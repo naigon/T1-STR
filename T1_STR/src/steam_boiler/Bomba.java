@@ -1,6 +1,8 @@
 
 package steam_boiler;
 
+import java.util.concurrent.TimeUnit;
+
 public class Bomba {
     
     //capacidade da bomba (litros p/ segundo)
@@ -18,10 +20,9 @@ public class Bomba {
         return P;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(boolean estado) throws InterruptedException {
         this.estado = estado;
-        
-        //5 segundos
+        TimeUnit.SECONDS.sleep(3);
     }
 
     public boolean getDefeito() {
