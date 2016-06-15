@@ -45,12 +45,12 @@ public class Controle{
             }
 
         //((se tiver sem agua sem vapor) OR (agua proxima dos niveis maximo e minimo)) AND (problema no sensor de agua)
-        if((verifica_nivel_agua(c)==0 && verifica_nivel_vapor(c)==0) || (verifica_nivel_agua(c)>=c.getM2() || verifica_nivel_agua(c)<=c.getM1()) && (c.getFuncionando_sensor_agua()==false)){
+        if(verifica_nivel_agua(c)<c.getN2() && verifica_nivel_agua(c)>c.getN1() && c.getFuncionando_sensor_agua()==false){
                 modo="RECUPERACAO";
                 return modo;
         }
         // ((se tiver sem agua sem vapor) OR (agua proxima dos niveis maximo e minimo)) AND (problema nos sensores de vapor ou da bomba)
-        if(((verifica_nivel_agua(c)==0 && verifica_nivel_vapor(c)==0) || (verifica_nivel_agua(c)>=c.getM2() || verifica_nivel_agua(c)<=c.getM1())) && (c.getFuncionando_sensor_vapor()==false || b.getDefeito()==true)){
+        if((verifica_nivel_agua(c)==0 && verifica_nivel_vapor(c)==0) || (verifica_nivel_agua(c)>=c.getM2() || verifica_nivel_agua(c)<=c.getM1()) && (verifica_sensores(c,b)==-1)){
             modo="PARADA DE EMERGENCIA";
             return modo;
         }
