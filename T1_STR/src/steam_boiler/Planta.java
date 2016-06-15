@@ -81,7 +81,7 @@ public class Planta {
                 modo_operacao="NORMAL";
                 break;
                 
-            case "RECUPERAÇÃO":
+            case "RECUPERACAO":
                 System.out.println("MODO: " + modo_operacao + "\n");
                 TimeUnit.SECONDS.sleep(1);
                 

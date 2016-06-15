@@ -44,22 +44,22 @@ public class Controle{
             return modo;
             }
 
+        //((se tiver sem agua sem vapor) OR (agua proxima dos niveis maximo e minimo)) AND (problema no sensor de agua)
+        if((verifica_nivel_agua(c)==0 && verifica_nivel_vapor(c)==0) || (verifica_nivel_agua(c)>=c.getM2() || verifica_nivel_agua(c)<=c.getM1()) && (c.getFuncionando_sensor_agua()==false)){
+                modo="RECUPERACAO";
+                return modo;
+        }
         // ((se tiver sem agua sem vapor) OR (agua proxima dos niveis maximo e minimo)) AND (problema nos sensores de vapor ou da bomba)
         if(((verifica_nivel_agua(c)==0 && verifica_nivel_vapor(c)==0) || (verifica_nivel_agua(c)>=c.getM2() || verifica_nivel_agua(c)<=c.getM1())) && (c.getFuncionando_sensor_vapor()==false || b.getDefeito()==true)){
             modo="PARADA DE EMERGENCIA";
             return modo;
         }
-     
+                   
         //se o nivel de agua está ok, mas alguma das unidades fisicas apresentar defeito, vai pro modo degradado
         if (verifica_nivel_agua(c)<c.getN2() && verifica_nivel_agua(c)>c.getN1() && c.getFuncionando_sensor_agua()==true && (c.getFuncionando_sensor_vapor()==false || b.getDefeito()==true)){
             modo="DEGRADADO";
             return modo;
         }
-        else
-            if(c.getFuncionando_sensor_agua()==false){
-                modo="RECUPERACAO";
-                return modo;
-            }
         
             else  {                      
                 modo="NORMAL";
