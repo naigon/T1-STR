@@ -4,19 +4,14 @@ package steam_boiler;
 public class Caldeira {
     
     //CONSTANTES
-    
     //capacidade maxima(litros)
     private final int C = 10000;
-    
     //limite minimo(litros)
     private final int M1 = 2000;
-    
     //limite maximo(litros)
     private final int M2 = 8000;
-    
     //minimo normal(litros)
     private final int N1 = 4000;
-    
     //maximo normal(litros)
     private final int N2 = 6000;
     //capacidade da valvula de vazao(litros p/ segundo)
@@ -26,12 +21,11 @@ public class Caldeira {
     //status do sensor que mede o vapor
     private boolean funcionando_sensor_vapor = true;
     //quantidade de agua na caldeira
-    private int q;
+    private int q=40000;
     //estado da valvula de vazao
     private boolean liberar_agua = false;
     //status do sensor de agua
     private boolean funcionando_sensor_agua = true;
-    
     //quantidade maxima de vapor(litros p/ segundo)
     private final int W = 4000;
     //gradiente maximo de incremento(litros p/ segundos p/ segundo)
@@ -55,7 +49,6 @@ public class Caldeira {
         return U2;
     }
     
-
     public int getQ() {
         return q;
     }
