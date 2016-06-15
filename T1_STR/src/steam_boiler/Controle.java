@@ -28,23 +28,28 @@ public class Controle{
         }
         if((verifica_nivel_agua(c)==0 || verifica_nivel_agua(c)<c.getN1()) && verifica_sensores(c,b)==1) {
             modo="ENCHER";
-            System.out.println("MENSAGEM: Caldera vazia ou abaixo do nivel normal\n");
+            System.out.println("MENSAGEM: caldera vazia ou abaixo do nivel normal");
             TimeUnit.SECONDS.sleep(1);
-            System.out.println("MENSAGEM: Preparando para encher...\n");
+            System.out.println("MENSAGEM: preparando para encher...");
             TimeUnit.SECONDS.sleep(1);
             return modo;
         }  
         if(verifica_nivel_agua(c)>c.getN2() && verifica_sensores(c,b)==1){
             modo="ESVAZIAR";
-            System.out.println("MENSAGEM: Caldera acima do nivel normal\n");
-            System.out.println("MENSAGEM: Nivel da caldeira: " + verifica_nivel_agua(c) + 'L' + "\n");
+            System.out.println("MENSAGEM: caldera acima do nivel normal");
+            System.out.println("MENSAGEM: nivel da caldeira: " + verifica_nivel_agua(c) + 'L');
             TimeUnit.SECONDS.sleep(1);
-            System.out.println("MENSAGEM: Preparando para esvaziar...\n");
+            System.out.println("MENSAGEM: preparando para esvaziar...\n");
             TimeUnit.SECONDS.sleep(1);
             return modo;
             }
+        //quando o nivel esta muito baixo ou muito alto e tem problema em um dos sensores
+        if((c.getQ()>c.getN2() || c.getQ()<c.getN1()) && (verifica_sensores(c,b)==-1)){
+            modo="PARADA DE EMERGENCIA";
+            return modo;
+        }     
 
-        //((se tiver sem agua sem vapor) OR (agua proxima dos niveis maximo e minimo)) AND (problema no sensor de agua)
+        //nivel de agua ideal mas com defeito no medidor de agua
         if(verifica_nivel_agua(c)<c.getN2() && verifica_nivel_agua(c)>c.getN1() && c.getFuncionando_sensor_agua()==false){
                 modo="RECUPERACAO";
                 return modo;
