@@ -21,7 +21,7 @@ public class Caldeira {
     //status do sensor que mede o vapor
     private boolean funcionando_sensor_vapor = true;
     //quantidade de agua na caldeira
-    private int q=5000;
+    private int q=0;
     //estado da valvula de vazao
     private boolean liberar_agua = false;
     //status do sensor de agua
