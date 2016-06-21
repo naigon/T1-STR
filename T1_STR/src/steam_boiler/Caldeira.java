@@ -19,13 +19,13 @@ public class Caldeira {
     //quantidade de vapor existente na caldeira
     private int v=0;
     //status do sensor que mede o vapor
-    private boolean funcionando_sensor_vapor = true;
+    private boolean funcionando_sensor_vapor = false;
     //quantidade de agua na caldeira
-    private int q=0;
+    private int q=6500;
     //estado da valvula de vazao
     private boolean liberar_agua = false;
     //status do sensor de agua
-    private boolean funcionando_sensor_agua = true;
+    private boolean funcionando_sensor_agua = false;
     //quantidade maxima de vapor(litros p/ segundo)
     private final int W = 4000;
     //gradiente maximo de incremento(litros p/ segundos p/ segundo)

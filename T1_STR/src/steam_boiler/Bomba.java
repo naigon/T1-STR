@@ -30,9 +30,9 @@ public class Bomba {
         Random gerador = new Random();
         int numero = gerador.nextInt(100);
         if(numero<80)
-        	return false;
-        else
         	return true;
+        else
+        	return false;
     }
 
     public void setDefeito(boolean defeito) {
