@@ -30,7 +30,6 @@ public class Planta {
                     System.out.println("MENSAGEM: preparando para esvaziar...\n");
                     pw.println("MENSAGEM: preparando para esvaziar...\n");
                     pw.println("\n");
-                    
                     TimeUnit.SECONDS.sleep(1);
                     System.out.println("MODO: " + modo_operacao + "\n");
                     pw.println("MODO: " + modo_operacao + "\n");
@@ -58,6 +57,7 @@ public class Planta {
                     break;
                 
                 case "ENCHER":
+                    
                     System.out.println("MENSAGEM: caldera vazia ou abaixo do nivel normal");
                     pw.println("MENSAGEM: caldera vazia ou abaixo do nivel normal");
                     TimeUnit.SECONDS.sleep(1);
@@ -68,8 +68,7 @@ public class Planta {
                     int incremento;
                     int incremento_vap;
                     
-                    while(cal.getQ() < (cal.getN1()+cal.getN2())/2){
-                        
+                    while(cal.getQ() < (cal.getN1()+cal.getN2())/2){             
                         System.out.println("MODO: " + modo_operacao + "\n");
                         pw.println("\n");
                         pw.println("MODO: " + modo_operacao + "\n");
@@ -92,6 +91,7 @@ public class Planta {
                     break;
                 
                 case "DEGRADADO":
+                    
                     System.out.println("MENSAGEM: nivel de agua ok, mas foi detectado um problema na bomba ou no sensor de vapor..\n");
                     pw.println("MENSAGEM: nivel de agua ok, mas foi detectado um problema na bomba ou no sensor de vapor..\n");
                     System.out.println("MODO: " + modo_operacao + "\n");
@@ -114,6 +114,7 @@ public class Planta {
                     break;
                 
                 case "NORMAL":
+                    
                     System.out.println("MODO: " + modo_operacao + "\n");
                     pw.println("MODO: " + modo_operacao + "\n");
                     pw.println("\n");
@@ -133,6 +134,7 @@ public class Planta {
                     break;
 
                 case "PARADA DE EMERGENCIA":
+                    
                     System.out.println("MENSAGEM: detectado problema em um ou mais dispositivos.\n");
                     pw.println("MENSAGEM: detectado problema em um ou mais dispositivos.\n");
                     TimeUnit.SECONDS.sleep(1);
@@ -158,6 +160,7 @@ public class Planta {
                     break;
                 
                 case "RECUPERACAO":
+                    
                     System.out.println("MENSAGEM: detectado problema no sensor de nivel de agua...\n");
                     pw.println("MENSAGEM: detectado problema no sensor de nivel de agua...\n");
                     TimeUnit.SECONDS.sleep(1);
