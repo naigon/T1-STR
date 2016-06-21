@@ -1,8 +1,6 @@
 
 package steam_boiler;
 
-import java.util.concurrent.TimeUnit;
-
 public class Controle{
     
     public int verifica_nivel_vapor(Caldeira c){
@@ -28,19 +26,10 @@ public class Controle{
         }
         if((verifica_nivel_agua(c)==0 || verifica_nivel_agua(c)<c.getN1()) && verifica_sensores(c,b)==1) {
             modo="ENCHER";
-            System.out.println("MENSAGEM: caldera vazia ou abaixo do nivel normal");
-            TimeUnit.SECONDS.sleep(1);
-            System.out.println("MENSAGEM: preparando para encher...");
-            TimeUnit.SECONDS.sleep(1);
             return modo;
         }  
         if(verifica_nivel_agua(c)>c.getN2() && verifica_sensores(c,b)==1){
             modo="ESVAZIAR";
-            System.out.println("MENSAGEM: caldera acima do nivel normal");
-            System.out.println("MENSAGEM: nivel da caldeira: " + verifica_nivel_agua(c) + 'L');
-            TimeUnit.SECONDS.sleep(1);
-            System.out.println("MENSAGEM: preparando para esvaziar...\n");
-            TimeUnit.SECONDS.sleep(1);
             return modo;
             }
         //quando o nivel esta muito baixo ou muito alto e tem problema em um dos sensores

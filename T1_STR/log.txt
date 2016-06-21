@@ -1,0 +1,22 @@
+MENSAGEM: caldera acima do nivel normal
+MENSAGEM: nivel da caldeira: 7500L
+MENSAGEM: preparando para esvaziar...
+
+MODO: ESVAZIAR
+
+MENSAGEM: nivel da caldeira: 7500L
+MENSAGEM: esvaziando a caldeira...
+MENSAGEM: nivel da caldeira: 7000L
+
+MENSAGEM: esvaziando a caldeira...
+MENSAGEM: nivel da caldeira: 6500L
+
+MENSAGEM: esvaziando a caldeira...
+MENSAGEM: nivel da caldeira: 6000L
+
+MENSAGEM: esvaziando a caldeira...
+MENSAGEM: nivel da caldeira: 5500L
+
+MENSAGEM: esvaziando a caldeira...
+MENSAGEM: nivel da caldeira: 5000L
+
