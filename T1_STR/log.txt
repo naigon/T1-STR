@@ -1,22 +1,62 @@
+MENSAGEM: detectado problema em um ou mais dispositivos.
+
+
+
+MODO: PARADA DE EMERGENCIA
+
+
+MENSAGEM: iniciando reparos...
+MENSAGEM: programa recuperado, reiniciando atividades...
+
+
+
 MENSAGEM: caldera acima do nivel normal
-MENSAGEM: nivel da caldeira: 7500L
+MENSAGEM: nivel da caldeira: 6500L
 MENSAGEM: preparando para esvaziar...
+
+
 
 MODO: ESVAZIAR
 
-MENSAGEM: nivel da caldeira: 7500L
-MENSAGEM: esvaziando a caldeira...
-MENSAGEM: nivel da caldeira: 7000L
 
-MENSAGEM: esvaziando a caldeira...
+
 MENSAGEM: nivel da caldeira: 6500L
-
 MENSAGEM: esvaziando a caldeira...
 MENSAGEM: nivel da caldeira: 6000L
+
+
 
 MENSAGEM: esvaziando a caldeira...
 MENSAGEM: nivel da caldeira: 5500L
 
+
+
 MENSAGEM: esvaziando a caldeira...
 MENSAGEM: nivel da caldeira: 5000L
+
+
+
+MODO: NORMAL
+
+
+
+QUANTIDADE DE AGUA: 5000L
+QUANTIDADE DE VAPOR: 50 L/s
+STATUS DA BOMBA: OK
+STATUS DO SENSOR DE NIVEL: OK
+STATUS DO SENSOR DE VAPOR: OK
+
+
+
+MODO: NORMAL
+
+
+
+QUANTIDADE DE AGUA: 5000L
+QUANTIDADE DE VAPOR: 50 L/s
+STATUS DA BOMBA: OK
+STATUS DO SENSOR DE NIVEL: OK
+STATUS DO SENSOR DE VAPOR: OK
+
+
 
