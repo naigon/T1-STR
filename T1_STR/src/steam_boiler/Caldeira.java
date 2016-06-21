@@ -26,27 +26,9 @@ public class Caldeira {
     private boolean liberar_agua = false;
     //status do sensor de agua
     private boolean funcionando_sensor_agua = true;
-    //quantidade maxima de vapor(litros p/ segundo)
-    private final int W = 4000;
-    //gradiente maximo de incremento(litros p/ segundos p/ segundo)
-    private final int U1 = 4000;
-    //gradiente maximo de decremento(litros p/ segundos p/ segundo)
-    private final int U2 = 4000;
-
+    
     public int getC() {
         return C;
-    }
-
-    public int getW() {
-        return W;
-    }
-
-    public int getU1() {
-        return U1;
-    }
-
-    public int getU2() {
-        return U2;
     }
     
     public int getQ() {
