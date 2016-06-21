@@ -29,10 +29,10 @@ public class Bomba {
     public boolean getDefeito() {
         Random gerador = new Random();
         int numero = gerador.nextInt(100);
-        if(numero<80)
-        	return true;
-        else
+        if(numero<85)
         	return false;
+        else
+        	return true;
     }
 
     public void setDefeito(boolean defeito) {

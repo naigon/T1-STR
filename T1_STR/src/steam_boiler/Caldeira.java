@@ -19,13 +19,13 @@ public class Caldeira {
     //quantidade de vapor existente na caldeira
     private int v=0;
     //status do sensor que mede o vapor
-    private boolean funcionando_sensor_vapor = false;
+    private boolean funcionando_sensor_vapor = true;
     //quantidade de agua na caldeira
-    private int q=6500;
+    private int q=0;
     //estado da valvula de vazao
     private boolean liberar_agua = false;
     //status do sensor de agua
-    private boolean funcionando_sensor_agua = false;
+    private boolean funcionando_sensor_agua = true;
     //quantidade maxima de vapor(litros p/ segundo)
     private final int W = 4000;
     //gradiente maximo de incremento(litros p/ segundos p/ segundo)
@@ -88,7 +88,7 @@ public class Caldeira {
     public boolean getFuncionando_sensor_vapor() {
        Random gerador = new Random();
  		int numero = gerador.nextInt(100);
-        if(numero<80)
+        if(numero<85)
         	return true;
         else
         	return false;
@@ -101,7 +101,7 @@ public class Caldeira {
     public boolean getFuncionando_sensor_agua() {
          Random gerador = new Random();
  		int numero = gerador.nextInt(100);
-        if(numero<80)
+        if(numero<85)
         	return true;
         else
         	return false;

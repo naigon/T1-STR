@@ -29,8 +29,7 @@ public class Planta {
                     TimeUnit.SECONDS.sleep(1);
                     System.out.println("MENSAGEM: preparando para esvaziar...\n");
                     pw.println("MENSAGEM: preparando para esvaziar...\n");
-                    pw.println("\n");
-                    
+                    pw.println("\n");    
                     TimeUnit.SECONDS.sleep(1);
                     System.out.println("MODO: " + modo_operacao + "\n");
                     pw.println("MODO: " + modo_operacao + "\n");
@@ -41,7 +40,8 @@ public class Planta {
                     System.out.println("MENSAGEM: nivel da caldeira: " + cal.getQ() + 'L');
                     pw.println("MENSAGEM: nivel da caldeira: " + cal.getQ() + 'L');
                     
-                    while(cal.getQ() > (cal.getN1()+cal.getN2())/2){
+                    while(cal.getQ() > (cal.getN1()+cal.getN2())/2){//esfazia ateh atingir a quantidade ideal quantidade ideal
+                        
                         System.out.println("MENSAGEM: esvaziando a caldeira...");
                         pw.println("MENSAGEM: esvaziando a caldeira...");
                         decremento = cal.getQ() - cal.getVZ();
@@ -68,7 +68,7 @@ public class Planta {
                     int incremento;
                     int incremento_vap;
                     
-                    while(cal.getQ() < (cal.getN1()+cal.getN2())/2){
+                    while(cal.getQ() < (cal.getN1()+cal.getN2())/2){//enche ateh atingir nivel ideal(5000L) 
                         
                         System.out.println("MODO: " + modo_operacao + "\n");
                         pw.println("\n");
@@ -178,7 +178,7 @@ public class Planta {
                     break;
                     
                 default:
-                    System.out.println("ERROR\n");
+                    ///////////////////////;
             }
         }
     }    
