@@ -1,6 +1,6 @@
 
 package steam_boiler;
-
+import java.util.Random;
 public class Caldeira {
     
     //CONSTANTES
@@ -86,7 +86,12 @@ public class Caldeira {
     }
 
     public boolean getFuncionando_sensor_vapor() {
-        return funcionando_sensor_vapor;
+       Random gerador = new Random();
+ 		int numero = gerador.nextInt(100);
+        if(numero<80)
+        	return true;
+        else
+        	return false;
     }
 
     public void setFuncionando_sensor_vapor(boolean funcionando_sensor_vapor) {
@@ -94,7 +99,12 @@ public class Caldeira {
     }
 
     public boolean getFuncionando_sensor_agua() {
-        return funcionando_sensor_agua;
+         Random gerador = new Random();
+ 		int numero = gerador.nextInt(100);
+        if(numero<80)
+        	return true;
+        else
+        	return false;
     }
 
     public void setFuncionando_sensor_agua(boolean funcionando_sensor_agua) {

@@ -1,6 +1,6 @@
 
 package steam_boiler;
-
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 public class Bomba {
@@ -26,7 +26,12 @@ public class Bomba {
     }
 
     public boolean getDefeito() {
-        return defeito;
+         Random gerador = new Random();
+ 		int numero = gerador.nextInt(100);
+        if(numero<80)
+        	return true;
+        else
+        	return false;
     }
 
     public void setDefeito(boolean defeito) {
